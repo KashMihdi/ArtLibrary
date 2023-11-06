@@ -16,6 +16,18 @@ struct Bio: Decodable, Identifiable {
     var id: Int {
         name.hashValue
     }
+    
+    init(
+        name: String = .init(),
+        bio: String  = .init(),
+        image: String = .init(),
+        works: [Work] = .init()
+    ) {
+        self.name = name
+        self.bio = bio
+        self.image = image
+        self.works = works
+    }
 }
 
 struct Work: Decodable {

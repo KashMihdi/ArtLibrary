@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct ArtistItem: View {
+    //@Binding var showDetail: Bool
     let artist: Bio
+//    let content: (Bio) -> Content
+    
+//    init(showDetail: Binding<Bool>, artist: Bio, @ViewBuilder content: @escaping (Bio) -> Content) {
+//        self._showDetail = showDetail
+//        self.artist = artist
+//        self.content = content
+//    }
     
     var body: some View {
         HStack(alignment: .center) {
@@ -25,7 +33,15 @@ struct ArtistItem: View {
                 Text(separatedBio(text:artist.bio).1)
                     .font(.subheadline.italic())
             }
+            .multilineTextAlignment(.leading)
+            .foregroundColor(.black)
         }
+//        .onTapGesture {
+//            showDetail.toggle()
+//        }
+//        .navigationDestination(isPresented: $showDetail){
+//            content(artist)
+//        }
         .padding(.vertical)
         .frame(maxWidth: .infinity,alignment: .leading)
         .background(.ultraThinMaterial)
@@ -44,6 +60,6 @@ struct ArtistItem: View {
 struct ArtistItem_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
-        ArtistItem(artist: artist.first!)
+        ArtistItem(artist: artist[0])
     }
 }

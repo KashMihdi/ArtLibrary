@@ -15,7 +15,13 @@ struct MainView: View {
             SearchBarView(searchText: searchBinding(vm.searchText))
             
             ScrollView(showsIndicators: false) {
-                ForEach(vm.artists, content: ArtistItem.init)
+                ForEach(vm.artists) { bio in
+                    NavigationLink {
+                        DetailView(bio: bio)
+                    } label: {
+                        ArtistItem(artist: bio)
+                    }
+                }
             }
             .navigationTitle("Art Library")
             .onAppear { vm.send(.viewAppeared) }
@@ -37,6 +43,12 @@ private extension MainView {
         .init(
             get: { text },
             set: { vm.send(.searchArtists($0))})
+    }
+    
+    func showDetailBinding(_ value: Bool) -> Binding<Bool> {
+        .init(
+            get: { value },
+            set: { vm.send(.showDetailView($0)) })
     }
 }
 
