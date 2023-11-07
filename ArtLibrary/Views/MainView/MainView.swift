@@ -16,10 +16,9 @@ struct MainView: View {
             
             ScrollView(showsIndicators: false) {
                 ForEach(vm.artists) { bio in
-                    NavigationLink {
-                        DetailView(bio: bio)
-                    } label: {
-                        ArtistItem(artist: bio)
+                    NavigationLink { DetailView(bio: bio) }
+                label: {
+                    ArtistItem(artist: bio)
                     }
                 }
             }

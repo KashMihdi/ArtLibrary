@@ -30,7 +30,7 @@ struct Bio: Decodable, Identifiable {
     }
 }
 
-struct Work: Decodable {
+struct Work: Decodable, Equatable {
     let title: String
     let image: String
     let info: String

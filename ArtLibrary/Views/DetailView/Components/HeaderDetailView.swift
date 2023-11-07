@@ -40,6 +40,6 @@ struct HeaderDetailView: View {
 struct HeaderDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
-        HeaderDetailView(artist: artist[3])
+        HeaderDetailView(artist: artist[6])
     }
 }

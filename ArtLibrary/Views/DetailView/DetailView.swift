@@ -11,11 +11,15 @@ struct DetailView: View {
     @StateObject private var vm: StoreOf<DetailViewDomain>
     
     var body: some View {
-        VStack {
-            HeaderDetailView(artist: vm.state)
-            Spacer()
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 30) {
+                HeaderDetailView(artist: vm.state)
+                ArtGridView(works: vm.works)
+                Spacer()
+            }
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationTitle(vm.name)
+        .ignoresSafeArea()
     }
     
     init(bio: Bio = .init()) {
