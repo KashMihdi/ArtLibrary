@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArtGridView: View {
     @Binding var oversize: Int?
+    
     let works: [Work]
     let gridLayout = Array(repeating: GridItem(.flexible(), spacing: 20), count: 1)
     var body: some View {

@@ -20,7 +20,7 @@ struct DetailView: View {
             .navigationBarBackButtonHidden(true)
         }
         .overlay(
-            ImageCarouselView(work: selectedWorkBinding())
+            ImageCarouselView(work: selectedWorkBinding(), step: stepBinding())
         )
         .ignoresSafeArea()
     }
@@ -44,6 +44,12 @@ private extension DetailView {
         .init(
             get: { vm.work },
             set: { _ in vm.send(.selectImage(nil)) })
+    }
+    
+    func stepBinding() -> Binding<Arrow> {
+        .init(
+            get: { vm.step },
+            set: { vm.send(.nextStepImage($0))})
     }
 }
 
