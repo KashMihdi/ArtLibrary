@@ -24,6 +24,7 @@ struct HeaderDetailView: View {
                 .onTapGesture {
                     showDetail.toggle()
                 }
+                .shadow(color: .black, radius: 10, x: 0, y: 5)
             
             Text(artist.bio)
                 .opacity(showDetail ? 1 : 0)
@@ -31,7 +32,7 @@ struct HeaderDetailView: View {
                 .foregroundColor(.white)
                 
         }
-        .clipped()
+        //.clipped()
         .animation(.linear, value: showDetail)
         .frame(maxWidth: .infinity, maxHeight: 250)
     }

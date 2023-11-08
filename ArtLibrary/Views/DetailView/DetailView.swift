@@ -12,15 +12,18 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 30) {
-                HeaderDetailView(artist: vm.bio)
+            VStack(spacing: 40) {
                 ArtGridView(oversize: indexGridBinding(), works: vm.bio.works)
                 Spacer()
             }
+            .padding(.top, 20)
             .navigationBarBackButtonHidden(true)
         }
+        .safeAreaInset(edge: .top) {
+            HeaderDetailView(artist: vm.bio)
+        }
         .overlay(
-            ImageCarouselView(work: selectedWorkBinding(), step: stepBinding())
+            ImageCarouselView(work: vm.bio.works, step: stepBinding(), imageIndex: indexGridBinding())
         )
         .animation(.linear(duration: 0.4), value: vm.selectedImage)
         .ignoresSafeArea()
@@ -39,12 +42,6 @@ private extension DetailView {
         .init(
             get: { vm.selectedImage },
             set: { vm.send(.selectImage($0)) })
-    }
-    
-    func selectedWorkBinding() -> Binding<Work?> {
-        .init(
-            get: { vm.work },
-            set: { _ in vm.send(.selectImage(nil)) })
     }
     
     func stepBinding() -> Binding<Arrow> {
