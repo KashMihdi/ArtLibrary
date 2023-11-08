@@ -22,6 +22,7 @@ struct DetailView: View {
         .overlay(
             ImageCarouselView(work: selectedWorkBinding(), step: stepBinding())
         )
+        .animation(.linear(duration: 0.4), value: vm.selectedImage)
         .ignoresSafeArea()
     }
     

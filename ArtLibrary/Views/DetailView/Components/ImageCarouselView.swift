@@ -22,14 +22,20 @@ struct ImageCarouselView: View {
                         .onTapGesture {
                             self.work = nil
                         }
-                
-                    Image(work.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
                     
-                    Text(work.info)
-                        .font(.subheadline)
+                    ZStack {
+                        
+                    }
+                    
+//                    VStack {
+//                        Image(work.image)
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(maxWidth: .infinity)
+//
+//                        Text(work.info)
+//                            .font(.subheadline)
+//                    }
                 }
                 
                 HStack(spacing: 30) {
@@ -50,6 +56,7 @@ struct ImageCarouselView: View {
                     }
                 }
             }
+            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
             .padding(.horizontal, 10)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.ultraThinMaterial)

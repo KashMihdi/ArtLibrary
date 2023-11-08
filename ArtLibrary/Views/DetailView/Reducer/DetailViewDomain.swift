@@ -17,7 +17,7 @@ struct DetailViewDomain: ReducerProtocol {
         var step: Arrow = .none
     }
     
-    enum Action {
+    enum Action: Equatable {
         case selectImage(Int?)
         case _updateWork
         case nextStepImage(Arrow)
@@ -44,10 +44,10 @@ struct DetailViewDomain: ReducerProtocol {
             guard let index = state.selectedImage else { return Empty().eraseToAnyPublisher() }
             switch state.step {
             case .next:
-                state.selectedImage = index % (state.bio.works.count - 1) + 1
+                state.selectedImage = min(state.bio.works.count - 1, index + 1)
                 return Just(._updateWork).eraseToAnyPublisher()
             case .back:
-                state.selectedImage = state.bio.works.count - (index % state.bio.works.count) - 1
+                state.selectedImage = max(0, index - 1)
                 return Just(._updateWork).eraseToAnyPublisher()
             case .none:
                 return Empty().eraseToAnyPublisher()

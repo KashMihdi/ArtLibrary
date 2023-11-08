@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ArtGridView: View {
     @Binding var oversize: Int?
-    
     let works: [Work]
     let gridLayout = Array(repeating: GridItem(.flexible(), spacing: 20), count: 1)
+    
     var body: some View {
         ZStack(alignment: .top) {
             LazyVGrid(columns: gridLayout, spacing: 20) {
@@ -36,16 +36,6 @@ struct ArtGridView: View {
                 }
             }
             .padding(.horizontal, 8)
-            
-            if let oversize {
-                Image(works[oversize].image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        self.oversize = nil
-                    }
-            }
         }
     }
 }
