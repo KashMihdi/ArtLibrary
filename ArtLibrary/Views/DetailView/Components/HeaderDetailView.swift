@@ -14,17 +14,30 @@ struct HeaderDetailView: View {
         ZStack(alignment: .bottom) {
             Image(artist.image)
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 250)
-                .clipped()
+//
                 .overlay(
-                    Color.black.opacity(showDetail ? 0.3 : 0)
+                    Text(artist.name)
+                        .font(.title.bold())
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 40)
+                    ,alignment: .bottomLeading
+                )
+                .overlay(
+                    Image(systemName: "info.circle")
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .padding(.trailing, 30)
+                        .padding(.top, 20)
+                        .onTapGesture {
+                            showDetail.toggle()
+                        }
+                    , alignment: .topTrailing
                 )
                 .blur(radius: showDetail ? 8 : 0)
-                .onTapGesture {
-                    showDetail.toggle()
-                }
-                .shadow(color: .black, radius: 10, x: 0, y: 5)
+                .shadow(color: .black, radius: 10, x: -5, y: 5)
+                //.clipped()
             
             Text(artist.bio)
                 .opacity(showDetail ? 1 : 0)
@@ -32,9 +45,8 @@ struct HeaderDetailView: View {
                 .foregroundColor(.white)
                 
         }
-        //.clipped()
         .animation(.linear, value: showDetail)
-        .frame(maxWidth: .infinity, maxHeight: 250)
+        .frame(maxWidth: .infinity, maxHeight: 240)
     }
 }
 

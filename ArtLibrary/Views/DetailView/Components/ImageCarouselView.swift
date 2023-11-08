@@ -58,6 +58,7 @@ struct ImageCarouselView: View {
                         step = .next
                     }
                 }
+                .animation(nil, value: imageIndex)
                 .padding()
                 .padding(.bottom, 20)
             }

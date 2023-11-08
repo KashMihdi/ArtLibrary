@@ -55,7 +55,7 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
         NavigationStack {
-            DetailView(bio: artist[0])
+            DetailView(bio: artist[6])
         }
     }
 }
