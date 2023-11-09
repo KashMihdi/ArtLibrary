@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct ImageCarouselView: View {
+    @State private var step: Arrow = .none
     let work: [Work]
-    @State private var dragOffset: CGFloat = 0
-    @Binding var step: Arrow
-    @Binding var imageIndex: Int?
+    var imageIndex: Int?
+    let completion: (Arrow) -> ()
     
     var body: some View {
         if let imageIndex {
             VStack(spacing: 40) {
-                
                 ZStack {
                     ForEach(0..<work.count, id: \.self) { index in
                         VStack {
@@ -28,13 +27,11 @@ struct ImageCarouselView: View {
                                 .scaledToFit()
                                 .frame(maxWidth: .infinity)
                             
-                            
                             Text(work[index].info)
                                 .font(.subheadline)
                                 .padding(.horizontal)
-                            
                         }
-                        .offset(x: CGFloat(index - imageIndex) * 400 + dragOffset)
+                        .offset(x: CGFloat(index - imageIndex) * 400)
                     }
                 }
             }
@@ -47,6 +44,8 @@ struct ImageCarouselView: View {
                     .opacity(imageIndex == 0 ? 0 : 1)
                     .onTapGesture {
                         step = .back
+                        completion(step)
+                        
                     }
                     Text("\(imageIndex + 1) / \(work.count)")
                     HStack {
@@ -56,22 +55,24 @@ struct ImageCarouselView: View {
                     .opacity(imageIndex == (work.count - 1) ? 0 : 1)
                     .onTapGesture {
                         step = .next
+                        completion(step)
                     }
                 }
                 .animation(nil, value: imageIndex)
                 .padding()
                 .padding(.bottom, 20)
             }
-            .safeAreaInset(edge: .top, content: {
+            .safeAreaInset(edge: .top) {
                 Image(systemName: "xmark")
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.top, 30)
                     .padding(.trailing, 20)
                     .onTapGesture {
-                        self.imageIndex = nil
+                        step = .none
+                        completion(step)
                     }
-            })
+            }
             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
             .padding(.horizontal, 10)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -83,7 +84,7 @@ struct ImageCarouselView: View {
 struct ImageCarouselView_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
-        ImageCarouselView(work: artist[0].works, step: .constant(.none), imageIndex: .constant(1))
+        ImageCarouselView(work: artist[0].works, imageIndex: 1) { _ in }
     }
 }
 

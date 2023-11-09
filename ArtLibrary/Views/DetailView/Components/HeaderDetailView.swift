@@ -16,7 +16,6 @@ struct HeaderDetailView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 250)
-//
                 .overlay(
                     Text(artist.name)
                         .font(.title.bold())

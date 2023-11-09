@@ -24,6 +24,7 @@
 		FD7B6C1E2AF8C9A900D93288 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C1D2AF8C9A900D93288 /* MainView.swift */; };
 		FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C202AF8D96F00D93288 /* Store.swift */; };
 		FD7B6C232AF8D9B700D93288 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */; };
+		FDAF3E782AFD420700FEC143 /* AdaptiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		FD7B6C1D2AF8C9A900D93288 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FD7B6C202AF8D96F00D93288 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
+		FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				FD268E012AF92E8000353449 /* HeaderDetailView.swift */,
 				FD268E032AF9517A00353449 /* ArtGridView.swift */,
 				FD268E072AFA893600353449 /* ImageCarouselView.swift */,
+				FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				FD7B6C1A2AF8BCD800D93288 /* ReducerProtocol.swift in Sources */,
 				FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */,
 				FD268E022AF92E8000353449 /* HeaderDetailView.swift in Sources */,
+				FDAF3E782AFD420700FEC143 /* AdaptiveView.swift in Sources */,
 				FD7B6C152AF8B63900D93288 /* Artist.swift in Sources */,
 				FD7B6C012AF8B4A000D93288 /* ArtLibraryApp.swift in Sources */,
 				FD7B6C1C2AF8C1AD00D93288 /* MainViewDomain.swift in Sources */,
