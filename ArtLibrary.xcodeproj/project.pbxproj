@@ -13,6 +13,8 @@
 		FD268E022AF92E8000353449 /* HeaderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD268E012AF92E8000353449 /* HeaderDetailView.swift */; };
 		FD268E042AF9517A00353449 /* ArtGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD268E032AF9517A00353449 /* ArtGridView.swift */; };
 		FD268E082AFA893600353449 /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD268E072AFA893600353449 /* ImageCarouselView.swift */; };
+		FD37521A2AFE7A36006C65F1 /* Extension + Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3752192AFE7A36006C65F1 /* Extension + Environment.swift */; };
+		FD37521C2AFE7AC7006C65F1 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37521B2AFE7AC7006C65F1 /* DeviceRotationViewModifier.swift */; };
 		FD7B6C012AF8B4A000D93288 /* ArtLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C002AF8B4A000D93288 /* ArtLibraryApp.swift */; };
 		FD7B6C082AF8B4A100D93288 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD7B6C072AF8B4A100D93288 /* Preview Assets.xcassets */; };
 		FD7B6C0F2AF8B4B000D93288 /* artists.json in Resources */ = {isa = PBXBuildFile; fileRef = FD7B6C0E2AF8B4AF00D93288 /* artists.json */; };
@@ -24,7 +26,6 @@
 		FD7B6C1E2AF8C9A900D93288 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C1D2AF8C9A900D93288 /* MainView.swift */; };
 		FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C202AF8D96F00D93288 /* Store.swift */; };
 		FD7B6C232AF8D9B700D93288 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */; };
-		FDAF3E782AFD420700FEC143 /* AdaptiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		FD268E012AF92E8000353449 /* HeaderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailView.swift; sourceTree = "<group>"; };
 		FD268E032AF9517A00353449 /* ArtGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtGridView.swift; sourceTree = "<group>"; };
 		FD268E072AFA893600353449 /* ImageCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselView.swift; sourceTree = "<group>"; };
+		FD3752192AFE7A36006C65F1 /* Extension + Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Environment.swift"; sourceTree = "<group>"; };
+		FD37521B2AFE7AC7006C65F1 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		FD7B6BFD2AF8B4A000D93288 /* ArtLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7B6C002AF8B4A000D93288 /* ArtLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtLibraryApp.swift; sourceTree = "<group>"; };
 		FD7B6C072AF8B4A100D93288 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		FD7B6C1D2AF8C9A900D93288 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FD7B6C202AF8D96F00D93288 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
-		FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,6 @@
 				FD268E012AF92E8000353449 /* HeaderDetailView.swift */,
 				FD268E032AF9517A00353449 /* ArtGridView.swift */,
 				FD268E072AFA893600353449 /* ImageCarouselView.swift */,
-				FDAF3E772AFD420700FEC143 /* AdaptiveView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -123,6 +124,14 @@
 				FD268DFD2AF92AD400353449 /* DetailViewDomain.swift */,
 			);
 			path = Reducer;
+			sourceTree = "<group>";
+		};
+		FD37521D2AFE7B2E006C65F1 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				FD37521B2AFE7AC7006C65F1 /* DeviceRotationViewModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		FD7B6BF42AF8B4A000D93288 = {
@@ -148,6 +157,7 @@
 				FD268DF72AF8FCD200353449 /* Views */,
 				FD7B6C1F2AF8D96100D93288 /* UDF */,
 				FD7B6C162AF8BC9200D93288 /* Extensions */,
+				FD37521D2AFE7B2E006C65F1 /* Modifiers */,
 				FD7B6C172AF8BC9E00D93288 /* Models */,
 				FD7B6C182AF8BCAB00D93288 /* Resources */,
 			);
@@ -166,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7B6C122AF8B51400D93288 /* Extension + Bundle.swift */,
+				FD3752192AFE7A36006C65F1 /* Extension + Environment.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -273,13 +284,14 @@
 				FD7B6C232AF8D9B700D93288 /* ArtistItem.swift in Sources */,
 				FD268E042AF9517A00353449 /* ArtGridView.swift in Sources */,
 				FD268DFE2AF92AD400353449 /* DetailViewDomain.swift in Sources */,
+				FD37521A2AFE7A36006C65F1 /* Extension + Environment.swift in Sources */,
 				FD7B6C1E2AF8C9A900D93288 /* MainView.swift in Sources */,
 				FD268E082AFA893600353449 /* ImageCarouselView.swift in Sources */,
 				FD268E002AF92D5F00353449 /* DetailView.swift in Sources */,
 				FD7B6C1A2AF8BCD800D93288 /* ReducerProtocol.swift in Sources */,
+				FD37521C2AFE7AC7006C65F1 /* DeviceRotationViewModifier.swift in Sources */,
 				FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */,
 				FD268E022AF92E8000353449 /* HeaderDetailView.swift in Sources */,
-				FDAF3E782AFD420700FEC143 /* AdaptiveView.swift in Sources */,
 				FD7B6C152AF8B63900D93288 /* Artist.swift in Sources */,
 				FD7B6C012AF8B4A000D93288 /* ArtLibraryApp.swift in Sources */,
 				FD7B6C1C2AF8C1AD00D93288 /* MainViewDomain.swift in Sources */,
@@ -417,8 +429,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,8 +457,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

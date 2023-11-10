@@ -8,50 +8,95 @@
 import SwiftUI
 
 struct HeaderDetailView: View {
-    @State private var showDetail = false
+    struct EntryValues {
+        static let imageFrame: (true: CGFloat, false: CGFloat) = (150, 250)
+        static let imageOpacity: CGFloat = 0.5
+        static let textColor: (true: Color, false: Color) = (.black, .white)
+        static let textPadding: CGFloat = 40
+        static let globalFrameW: (true: CGFloat, false: CGFloat) = (200, 250)
+    }
+
+    @State private var changedOrientation = false
+    @Environment(\.changeOrientation) var orientation
+    @Environment(\.dismiss) var dismiss
+    
     let artist: Bio
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
+        AnyLayout(changedOrientation
+                  ? AnyLayout(HStackLayout())
+                  : AnyLayout(ZStackLayout(alignment: .bottomTrailing))) {
             Image(artist.image)
                 .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, maxHeight: 250)
-                .overlay(
-                    Text(artist.name)
-                        .font(.title.bold())
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 40)
-                    ,alignment: .bottomLeading
+                .aspectRatio(contentMode: changedOrientation ? .fit : .fill)
+                .frame(maxHeight: changedOrientation
+                       ? EntryValues.imageFrame.true
+                       : EntryValues.imageFrame.false
                 )
-                .overlay(
-                    Image(systemName: "info.circle")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding(.trailing, 30)
-                        .padding(.top, 20)
-                        .onTapGesture {
-                            showDetail.toggle()
-                        }
-                    , alignment: .topTrailing
+                .overlay(Color.black.opacity(EntryValues.imageOpacity))
+                .clipShape(changedOrientation
+                           ? AnyShape(Circle())
+                           : AnyShape(Rectangle())
                 )
-                .blur(radius: showDetail ? 8 : 0)
-                .shadow(color: .black, radius: 10, x: -5, y: 5)
-                //.clipped()
             
-            Text(artist.bio)
-                .opacity(showDetail ? 1 : 0)
-                .padding([.horizontal, .bottom], 40)
-                .foregroundColor(.white)
-                
+            VStack {
+                Text(artist.name)
+                    .font(.title.bold())
+                    .foregroundColor(
+                        changedOrientation
+                            ? EntryValues.textColor.true
+                            : EntryValues.textColor.false
+                    )
+                    .padding(.horizontal, EntryValues.textPadding)
+                if changedOrientation {
+                    Text(artist.bio)
+                        .foregroundColor(.black)
+                }
+            }
         }
-        .animation(.linear, value: showDetail)
-        .frame(maxWidth: .infinity, maxHeight: 240)
+        .overlay(
+            Image(systemName: "arrow.left")
+                .font(.title.bold())
+                .foregroundColor(changedOrientation ? .black : .white)
+                .padding(.leading, 20)
+                .onTapGesture {
+                    dismiss()
+                }
+            , alignment: changedOrientation ? .topTrailing : .bottomLeading
+        )
+        .onAppear { checkOrientation(orientation) }
+        .animation(.linear, value: changedOrientation)
+        .frame(
+            maxWidth: .infinity,
+            maxHeight:
+                changedOrientation
+                    ? EntryValues.globalFrameW.true
+                    : EntryValues.globalFrameW.false,
+                alignment: .leading
+        )
+        .background(
+            Color.white
+                .shadow(color: .black, radius: 10, y: 5)
+                .ignoresSafeArea()
+        )
+        .onChange(of: orientation, perform: checkOrientation(_:))
+        .animation(.linear, value: changedOrientation)
+    }
+}
+
+private extension HeaderDetailView {
+    func checkOrientation(_ orientation: UIDeviceOrientation) {
+        switch orientation {
+        case .portrait, .unknown: changedOrientation = false
+        default: changedOrientation = true
+        }
     }
 }
 
 struct HeaderDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
-        HeaderDetailView(artist: artist[6])
+        HeaderDetailView(artist: artist[3])
     }
 }
+

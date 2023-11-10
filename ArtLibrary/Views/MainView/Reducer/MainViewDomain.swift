@@ -13,9 +13,7 @@ struct MainViewDomain: ReducerProtocol {
     //MARK: - State
     struct State {
         var artists: [Bio] = .init()
-        var searchArtists: [Bio] = .init()
         var searchText: String = .init()
-        var showDetail: Bool = .init(false)
     }
     
     //MARK: - Action
@@ -23,7 +21,7 @@ struct MainViewDomain: ReducerProtocol {
         case viewAppeared
         case searchArtists(String)
         case _filteredData(String)
-        case showDetailView(Bool)
+        case leaveScreen
     }
     
     //MARK: - Dependencies
@@ -48,8 +46,8 @@ struct MainViewDomain: ReducerProtocol {
         case let ._filteredData(word):
             state.artists = dataBundle.filter { $0.name.contains(word) }
             
-        case let .showDetailView(showDetail):
-            state.showDetail = showDetail
+        case .leaveScreen: state.searchText = ""
+
         }
         return Empty().eraseToAnyPublisher()
     }

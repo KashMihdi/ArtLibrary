@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ArtLibraryApp: App {
+    @State private var orientation: UIDeviceOrientation = .portrait
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environment(\.changeOrientation, orientation)
+                .onRotate { newPosition in
+                    orientation = newPosition
+                }
         }
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 extension Bundle {
     
     static func decode<T: Decodable>(_ file: FileName) -> T {

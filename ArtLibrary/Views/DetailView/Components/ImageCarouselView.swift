@@ -16,24 +16,27 @@ struct ImageCarouselView: View {
     var body: some View {
         if let imageIndex {
             VStack(spacing: 40) {
-                ZStack {
-                    ForEach(0..<work.count, id: \.self) { index in
-                        VStack {
-                            Text(work[index].title)
-                                .font(.title.bold())
-                            
-                            Image(work[index].image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: .infinity)
-                            
-                            Text(work[index].info)
-                                .font(.subheadline)
-                                .padding(.horizontal)
+                GeometryReader { geo in
+                    ZStack {
+                        ForEach(0..<work.count, id: \.self) { index in
+                            VStack {
+                                Text(work[index].title)
+                                    .font(.title.bold())
+                                
+                                Image(work[index].image)
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                Text(work[index].info)
+                                    .font(.subheadline)
+                                    .padding(.horizontal)
+                            }
+                            .offset(x: CGFloat(index - imageIndex) * geo.size.width)
                         }
-                        .offset(x: CGFloat(index - imageIndex) * 400)
                     }
+                    .padding(.horizontal)
                 }
+                .frame(maxWidth: .infinity)
             }
             .safeAreaInset(edge: .bottom) {
                 HStack(spacing: 30) {
@@ -74,9 +77,9 @@ struct ImageCarouselView: View {
                     }
             }
             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
-            .padding(.horizontal, 10)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.ultraThinMaterial)
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }
@@ -84,7 +87,7 @@ struct ImageCarouselView: View {
 struct ImageCarouselView_Previews: PreviewProvider {
     static var previews: some View {
         let artist: [Bio] = Bundle.decode(.artists)
-        ImageCarouselView(work: artist[0].works, imageIndex: 1) { _ in }
+        ImageCarouselView(work: artist[0].works, imageIndex: 2) { _ in }
     }
 }
 

@@ -8,19 +8,35 @@
 import SwiftUI
 
 struct ArtGridView: View {
+    struct EntryValues {
+        static let gridSpacing: CGSize = .init(width: 20, height: 20)
+        static let imageFrame: CGFloat = 150
+        static let imageOverlayOpacity: CGFloat = 0.3
+        static let itemShadow: (opacity: CGFloat, radius: CGFloat, y: CGFloat) = (0.2, 5, 5)
+        static let clipRadius: CGFloat = 20
+        static let stackPadding: CGFloat = 8
+    }
+    
+    @Environment(\.changeOrientation) var orientation
+    @State private var column = 1
     let works: [Work]
     let completion: (Work) -> ()
-    let gridLayout = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
     var body: some View {
-        LazyVGrid(columns: gridLayout, spacing: 20) {
+        let gridLayout = Array(
+            repeating:
+                GridItem(.flexible(), spacing:EntryValues.gridSpacing.width),
+            count: column)
+        LazyVGrid(columns: gridLayout, spacing: EntryValues.gridSpacing.height) {
             ForEach(works, id: \.image) { work in
                 ZStack {
                     Image(work.image)
                         .resizable()
-                        .frame(height: 150)
+                        .frame(height: EntryValues.imageFrame)
                         .overlay(
-                            Color.black.opacity(0.3)
+                            Color.black.opacity(
+                                EntryValues.imageOverlayOpacity
+                            )
                         )
                     
                     Text(work.title)
@@ -30,11 +46,28 @@ struct ArtGridView: View {
                 .onTapGesture {
                     completion(work)
                 }
-                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .shadow(
+                    color: .black.opacity(EntryValues.itemShadow.opacity),
+                    radius: EntryValues.itemShadow.radius,
+                    y: EntryValues.itemShadow.y
+                )
+                .clipShape(
+                    RoundedRectangle(cornerRadius: EntryValues.clipRadius)
+                )
             }
         }
-        .padding(.horizontal, 8)
+        .onAppear{ checkOrientation(orientation)}
+        .onRotate(perform: checkOrientation(_:))
+        .padding(.horizontal, EntryValues.stackPadding)
+    }
+}
+
+private extension ArtGridView {
+    func checkOrientation(_ orientation: UIDeviceOrientation) {
+        switch orientation {
+        case .portrait, .unknown:  column = 1
+        default: column = 2
+        }
     }
 }
 

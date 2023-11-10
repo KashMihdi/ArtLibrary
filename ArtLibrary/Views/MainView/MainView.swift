@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var vm: StoreOf<MainViewDomain>
-    
+
     var body: some View {
         NavigationStack {
             SearchBarView(searchText: searchBinding(vm.searchText))
@@ -24,6 +24,7 @@ struct MainView: View {
             }
             .navigationTitle("Art Library")
             .onAppear { vm.send(.viewAppeared) }
+            .onDisappear { vm.send(.leaveScreen)}
         }
     }
     
@@ -42,12 +43,6 @@ private extension MainView {
         .init(
             get: { text },
             set: { vm.send(.searchArtists($0))})
-    }
-    
-    func showDetailBinding(_ value: Bool) -> Binding<Bool> {
-        .init(
-            get: { value },
-            set: { vm.send(.showDetailView($0)) })
     }
 }
 
