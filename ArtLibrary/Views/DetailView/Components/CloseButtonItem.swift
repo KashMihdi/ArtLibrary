@@ -10,7 +10,7 @@ import SwiftUI
 struct CloseButtonItem: View {
     struct EntryValues {
         static let imageName = "xmark"
-        static let imagePaddingTop: CGFloat = 30
+        static let imagePaddingTop: CGFloat = 50
         static let imagePaddingTrailing: CGFloat = 35
     }
     
