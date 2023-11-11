@@ -73,7 +73,6 @@ private extension ArtGridView {
 
 struct ArtGridView_Previews: PreviewProvider {
     static var previews: some View {
-        let artist: [Bio] = Bundle.decode(.artists)
-        ArtGridView(works: artist[0].works) { _ in }
+        ArtGridView(works: dev.works) { _ in }
     }
 }

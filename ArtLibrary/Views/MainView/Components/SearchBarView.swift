@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct SearchBarView: View {
+    struct EntryValues {
+        static var searchIcon = "magnifyingglass"
+        static var placeholder = "Search by name or symbol..."
+        static var clearIcon = "xmark.circle.fill"
+        static let clearIconOffset: CGFloat = 10
+        static let clearIconOpacity: (true: CGFloat, false: CGFloat) = (0,1)
+        static let textFieldCorner: CGFloat = 25
+        static let textFieldBorder: CGFloat = 2
+        static let textFieldPadding: CGFloat = 10
+    }
+    
     @Binding var searchText: String
     
     var body: some View {
         HStack {
-            Image(systemName: "magnifyingglass")
+            Image(systemName: EntryValues.searchIcon)
                 .foregroundColor(
                     searchText.isEmpty ? .black : .gray
                 )
-            TextField("Search by name or symbol...", text: $searchText)
+            TextField(EntryValues.placeholder, text: $searchText)
                 .foregroundColor(.black)
                 .autocorrectionDisabled(true)
                 .overlay(
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: EntryValues.clearIcon)
                         .padding()
-                        .offset(x: 10)
+                        .offset(x: EntryValues.clearIconOffset)
                         .foregroundColor(.black)
-                        .opacity(searchText.isEmpty ? 0 : 1)
+                        .opacity(
+                            searchText.isEmpty
+                            ? EntryValues.clearIconOpacity.true
+                            : EntryValues.clearIconOpacity.false
+                        )
                         .onTapGesture {
                             searchText = ""
                         }
@@ -34,13 +49,13 @@ struct SearchBarView: View {
         .font(.headline)
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: EntryValues.textFieldCorner)
                 .strokeBorder(
                     Color.gray,
-                    lineWidth: 2
+                    lineWidth: EntryValues.textFieldBorder
                 )
         )
-        .padding(.horizontal, 10)
+        .padding(.horizontal, EntryValues.textFieldPadding)
     }
 }
 

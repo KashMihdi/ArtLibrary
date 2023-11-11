@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ImageCarouselView: View {
+    struct EntryValues {
+        static let stackSpacing: CGFloat = 40
+        static let insetsItemPadding: CGFloat = 20
+    }
+    
     @State private var step: Arrow = .none
     let work: [Work]
     var imageIndex: Int?
@@ -15,69 +20,28 @@ struct ImageCarouselView: View {
     
     var body: some View {
         if let imageIndex {
-            VStack(spacing: 40) {
-                GeometryReader { geo in
-                    ZStack {
-                        ForEach(0..<work.count, id: \.self) { index in
-                            VStack {
-                                Text(work[index].title)
-                                    .font(.title.bold())
-                                
-                                Image(work[index].image)
-                                    .resizable()
-                                    .scaledToFit()
-                                
-                                Text(work[index].info)
-                                    .font(.subheadline)
-                                    .padding(.horizontal)
-                            }
-                            .offset(x: CGFloat(index - imageIndex) * geo.size.width)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                .frame(maxWidth: .infinity)
+            VStack(spacing: EntryValues.stackSpacing) {
+                CarouselItem(work: work, imageIndex: imageIndex)
             }
             .safeAreaInset(edge: .bottom) {
-                HStack(spacing: 30) {
-                    HStack {
-                        Image(systemName: "arrow.left")
-                        Text("Back")
-                    }
-                    .opacity(imageIndex == 0 ? 0 : 1)
-                    .onTapGesture {
-                        step = .back
-                        completion(step)
-                        
-                    }
+                ArrowInsetsItem(
+                    step: $step,
+                    imageIndex: imageIndex,
+                    lastIndex: work.endIndex,
+                    completion: completion
+                ) {
                     Text("\(imageIndex + 1) / \(work.count)")
-                    HStack {
-                        Text("Next")
-                        Image(systemName: "arrow.right")
-                    }
-                    .opacity(imageIndex == (work.count - 1) ? 0 : 1)
-                    .onTapGesture {
-                        step = .next
-                        completion(step)
-                    }
                 }
                 .animation(nil, value: imageIndex)
                 .padding()
-                .padding(.bottom, 20)
+                .padding(.bottom, EntryValues.insetsItemPadding)
             }
             .safeAreaInset(edge: .top) {
-                Image(systemName: "xmark")
-                    .font(.title)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.top, 30)
-                    .padding(.trailing, 20)
-                    .onTapGesture {
-                        step = .none
-                        completion(step)
-                    }
+                CloseButtonItem(step: $step, completion: completion)
             }
             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipped()
             .background(.ultraThinMaterial)
             .edgesIgnoringSafeArea(.bottom)
         }
@@ -86,8 +50,7 @@ struct ImageCarouselView: View {
 
 struct ImageCarouselView_Previews: PreviewProvider {
     static var previews: some View {
-        let artist: [Bio] = Bundle.decode(.artists)
-        ImageCarouselView(work: artist[0].works, imageIndex: 2) { _ in }
+        ImageCarouselView(work: dev.works, imageIndex: 2) { _ in }
     }
 }
 

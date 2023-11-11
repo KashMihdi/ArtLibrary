@@ -40,9 +40,8 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let artist: [Bio] = Bundle.decode(.artists)
         NavigationStack {
-            DetailView(bio: artist[2])
+            DetailView(bio: dev.bio)
         }
     }
 }

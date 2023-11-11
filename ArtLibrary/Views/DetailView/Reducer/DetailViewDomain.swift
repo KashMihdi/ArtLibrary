@@ -10,18 +10,21 @@ import Combine
 
 struct DetailViewDomain: ReducerProtocol {
     
+    //MARK: - State
     struct State {
         var bio: Bio = .init()
         var selectedImage: Int? = nil
         var step: Arrow = .none
     }
     
+    //MARK: - Action
     enum Action: Equatable {
         case selectImage(Work)
         case nextStepImage(Arrow)
         case _updateIndex
     }
     
+    //MARK: - Reducer
     func reduce(_ state: inout State, _ action: Action) -> AnyPublisher<Action, Never> {
         switch action {
         case let .selectImage(work):
@@ -45,6 +48,7 @@ struct DetailViewDomain: ReducerProtocol {
         return Empty().eraseToAnyPublisher()
     }
     
+    //MARK: - Live Store
     static let liveStore = Store(state: Self.State(), reducer: Self())
     
 }

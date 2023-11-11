@@ -26,6 +26,10 @@
 		FD7B6C1E2AF8C9A900D93288 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C1D2AF8C9A900D93288 /* MainView.swift */; };
 		FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C202AF8D96F00D93288 /* Store.swift */; };
 		FD7B6C232AF8D9B700D93288 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */; };
+		FDC644C72AFF873B004DDD4D /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC644C62AFF873B004DDD4D /* CarouselItem.swift */; };
+		FDC644C92AFF881E004DDD4D /* Extension + PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC644C82AFF881E004DDD4D /* Extension + PreviewProvider.swift */; };
+		FDC644CB2AFF8C38004DDD4D /* ArrowInsetsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC644CA2AFF8C38004DDD4D /* ArrowInsetsItem.swift */; };
+		FDC644CD2AFF9385004DDD4D /* CloseButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC644CC2AFF9385004DDD4D /* CloseButtonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		FD7B6C1D2AF8C9A900D93288 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FD7B6C202AF8D96F00D93288 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FD7B6C222AF8D9B700D93288 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
+		FDC644C62AFF873B004DDD4D /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
+		FDC644C82AFF881E004DDD4D /* Extension + PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + PreviewProvider.swift"; sourceTree = "<group>"; };
+		FDC644CA2AFF8C38004DDD4D /* ArrowInsetsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowInsetsItem.swift; sourceTree = "<group>"; };
+		FDC644CC2AFF9385004DDD4D /* CloseButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,9 @@
 				FD268E012AF92E8000353449 /* HeaderDetailView.swift */,
 				FD268E032AF9517A00353449 /* ArtGridView.swift */,
 				FD268E072AFA893600353449 /* ImageCarouselView.swift */,
+				FDC644C62AFF873B004DDD4D /* CarouselItem.swift */,
+				FDC644CA2AFF8C38004DDD4D /* ArrowInsetsItem.swift */,
+				FDC644CC2AFF9385004DDD4D /* CloseButtonItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -177,6 +188,7 @@
 			children = (
 				FD7B6C122AF8B51400D93288 /* Extension + Bundle.swift */,
 				FD3752192AFE7A36006C65F1 /* Extension + Environment.swift */,
+				FDC644C82AFF881E004DDD4D /* Extension + PreviewProvider.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC644C72AFF873B004DDD4D /* CarouselItem.swift in Sources */,
 				FD268DF52AF8EB8E00353449 /* SearchBarView.swift in Sources */,
 				FD7B6C132AF8B51400D93288 /* Extension + Bundle.swift in Sources */,
 				FD7B6C232AF8D9B700D93288 /* ArtistItem.swift in Sources */,
@@ -286,6 +299,7 @@
 				FD268DFE2AF92AD400353449 /* DetailViewDomain.swift in Sources */,
 				FD37521A2AFE7A36006C65F1 /* Extension + Environment.swift in Sources */,
 				FD7B6C1E2AF8C9A900D93288 /* MainView.swift in Sources */,
+				FDC644CB2AFF8C38004DDD4D /* ArrowInsetsItem.swift in Sources */,
 				FD268E082AFA893600353449 /* ImageCarouselView.swift in Sources */,
 				FD268E002AF92D5F00353449 /* DetailView.swift in Sources */,
 				FD7B6C1A2AF8BCD800D93288 /* ReducerProtocol.swift in Sources */,
@@ -293,6 +307,8 @@
 				FD7B6C212AF8D96F00D93288 /* Store.swift in Sources */,
 				FD268E022AF92E8000353449 /* HeaderDetailView.swift in Sources */,
 				FD7B6C152AF8B63900D93288 /* Artist.swift in Sources */,
+				FDC644C92AFF881E004DDD4D /* Extension + PreviewProvider.swift in Sources */,
+				FDC644CD2AFF9385004DDD4D /* CloseButtonItem.swift in Sources */,
 				FD7B6C012AF8B4A000D93288 /* ArtLibraryApp.swift in Sources */,
 				FD7B6C1C2AF8C1AD00D93288 /* MainViewDomain.swift in Sources */,
 			);
