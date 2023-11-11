@@ -14,7 +14,13 @@ struct ArrowInsetsItem<Content: View>: View {
     let completion: (Arrow) -> ()
     let content: Content
     
-    init(step: Binding<Arrow>, imageIndex: Int, lastIndex: Int, completion: @escaping (Arrow) -> Void, @ViewBuilder content: () -> Content) {
+    init(
+        step: Binding<Arrow>,
+        imageIndex: Int,
+        lastIndex: Int,
+        completion: @escaping (Arrow) -> Void,
+        @ViewBuilder content: () -> Content
+    ){
         self._step = step
         self.imageIndex = imageIndex
         self.lastIndex = lastIndex
@@ -40,7 +46,7 @@ struct ArrowInsetsItem<Content: View>: View {
                 Text("Next")
                 Image(systemName: "arrow.right")
             }
-            .opacity(imageIndex == lastIndex ? 0 : 1)
+            .opacity(imageIndex == (lastIndex - 1) ? 0 : 1)
             .onTapGesture {
                 step = .next
                 completion(step)
@@ -51,6 +57,6 @@ struct ArrowInsetsItem<Content: View>: View {
 
 struct ArrowInsetsItem_Previews: PreviewProvider {
     static var previews: some View {
-        ArrowInsetsItem(step: .constant(.none), imageIndex: 1, lastIndex: 3, completion: { _ in }, content: { })
+        ArrowInsetsItem(step: .constant(.none), imageIndex: 3, lastIndex: 3, completion: { _ in }, content: { })
     }
 }

@@ -60,7 +60,7 @@ struct ArtGridView: View {
         /// with custom Environment
         //.onAppear{ checkOrientation(orientation)}
         //.onRotate(perform: checkOrientation(_:))
-        .onAppear{ checkOrientation(verticalSizeClass)}
+        .onAppear{ checkOrientation(verticalSizeClass) }
         .onChange(of: verticalSizeClass, perform: checkOrientation(_:))
         .padding(.horizontal, EntryValues.stackPadding)
     }
