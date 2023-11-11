@@ -18,6 +18,7 @@ struct ArtGridView: View {
     }
     
     @Environment(\.changeOrientation) var orientation
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @State private var column = 1
     let works: [Work]
     let completion: (Work) -> ()
@@ -56,8 +57,11 @@ struct ArtGridView: View {
                 )
             }
         }
-        .onAppear{ checkOrientation(orientation)}
-        .onRotate(perform: checkOrientation(_:))
+        /// with custom Environment
+        //.onAppear{ checkOrientation(orientation)}
+        //.onRotate(perform: checkOrientation(_:))
+        .onAppear{ checkOrientation(verticalSizeClass)}
+        .onChange(of: verticalSizeClass, perform: checkOrientation(_:))
         .padding(.horizontal, EntryValues.stackPadding)
     }
 }
@@ -66,6 +70,12 @@ private extension ArtGridView {
     func checkOrientation(_ orientation: UIDeviceOrientation) {
         switch orientation {
         case .portrait, .unknown:  column = 1
+        default: column = 2
+        }
+    }
+    func checkOrientation(_ orientation: UserInterfaceSizeClass?) {
+        switch orientation {
+        case .regular:  column = 1
         default: column = 2
         }
     }

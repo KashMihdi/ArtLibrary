@@ -19,6 +19,7 @@ struct HeaderDetailView: View {
     @State private var changedOrientation = false
     @Environment(\.changeOrientation) var orientation
     @Environment(\.dismiss) var dismiss
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     let artist: Bio
     
@@ -64,7 +65,10 @@ struct HeaderDetailView: View {
                 }
             , alignment: changedOrientation ? .topTrailing : .bottomLeading
         )
-        .onAppear { checkOrientation(orientation) }
+        /// with custom Environment
+        //.onAppear { checkOrientation(orientation) }
+        //.onChange(of: orientation, perform: checkOrientation(_:))
+        .onAppear { checkOrientation(verticalSizeClass!)}
         .animation(.linear, value: changedOrientation)
         .frame(
             maxWidth: .infinity,
@@ -79,7 +83,7 @@ struct HeaderDetailView: View {
                 .shadow(color: .black, radius: 10, y: 5)
                 .ignoresSafeArea()
         )
-        .onChange(of: orientation, perform: checkOrientation(_:))
+        .onChange(of: verticalSizeClass!, perform: checkOrientation(_:))
         .animation(.linear, value: changedOrientation)
     }
 }
@@ -88,6 +92,13 @@ private extension HeaderDetailView {
     func checkOrientation(_ orientation: UIDeviceOrientation) {
         switch orientation {
         case .portrait, .unknown: changedOrientation = false
+        default: changedOrientation = true
+        }
+    }
+    
+    func checkOrientation(_ orientation: UserInterfaceSizeClass) {
+        switch orientation {
+        case .regular: changedOrientation = false
         default: changedOrientation = true
         }
     }
